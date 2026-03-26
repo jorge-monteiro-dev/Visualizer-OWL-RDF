@@ -20,7 +20,7 @@ COPY . .
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Config Nginx — remplace la config globale
+# Config Nginx
 COPY docker/nginx.conf /etc/nginx/nginx.conf
 
 # Script démarrage
@@ -32,5 +32,5 @@ RUN mkdir -p public/uploads && \
     chown -R www-data:www-data /var/www/html && \
     chmod 755 public/uploads
 
-EXPOSE 80
+EXPOSE 8080
 CMD ["/start.sh"]
