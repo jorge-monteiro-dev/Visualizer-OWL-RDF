@@ -1,22 +1,17 @@
-FROM php:8.3-apache
-
-# Désactiver mpm_event (chargé par défaut), activer mpm_prefork + rewrite
-RUN rm -f /etc/apache2/mods-enabled/mpm_event.conf \
-          /etc/apache2/mods-enabled/mpm_event.load \
-          /etc/apache2/mods-enabled/mpm_worker.conf \
-          /etc/apache2/mods-enabled/mpm_worker.load 2>/dev/null; \
-    ln -sf /etc/apache2/mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf && \
-    ln -sf /etc/apache2/mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load && \
-    ln -sf /etc/apache2/mods-available/rewrite.load     /etc/apache2/mods-enabled/rewrite.load
+FROM php:8.3-fpm-alpine
 
 # Extensions PHP
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        libxml2-dev unzip \
-    && docker-php-ext-install opcache \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache nginx libxml2-dev && \
+    docker-php-ext-install opcache
 
-# Config Apache
-COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
+# Config PHP
+RUN echo "upload_max_filesize=15M" >  /usr/local/etc/php/conf.d/ontoviz.ini && \
+    echo "post_max_size=16M"       >> /usr/local/etc/php/conf.d/ontoviz.ini && \
+    echo "memory_limit=256M"       >> /usr/local/etc/php/conf.d/ontoviz.ini && \
+    echo "max_execution_time=60"   >> /usr/local/etc/php/conf.d/ontoviz.ini
+
+# Config Nginx
+COPY docker/nginx.conf /etc/nginx/nginx.conf
 
 # Projet
 WORKDIR /var/www/html
@@ -26,13 +21,14 @@ COPY . .
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Uploads
+# Permissions
 RUN mkdir -p public/uploads && \
-    chown -R www-data:www-data public/uploads && \
+    chown -R www-data:www-data /var/www/html && \
     chmod 755 public/uploads
 
-# Config PHP
-RUN echo "upload_max_filesize=15M\npost_max_size=16M\nmemory_limit=256M\nmax_execution_time=60\nopcache.enable=1" \
-    > /usr/local/etc/php/conf.d/ontoviz.ini
+# Script de démarrage
+COPY docker/start.sh /start.sh
+RUN chmod +x /start.sh
 
 EXPOSE 80
+CMD ["/start.sh"]
