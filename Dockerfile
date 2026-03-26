@@ -1,10 +1,10 @@
 FROM php:8.3-fpm-alpine
 
-# Nginx + libxml2
+# Nginx + libxml2 + dépendances pour SimpleXML
 RUN apk add --no-cache nginx libxml2-dev
 
-# Extensions PHP
-RUN docker-php-ext-install opcache
+# Extensions PHP (simplexml est utilisé par OntologyParser)
+RUN docker-php-ext-install opcache simplexml
 
 # Config PHP
 RUN echo "upload_max_filesize=15M" >  /usr/local/etc/php/conf.d/ontoviz.ini && \
@@ -15,6 +15,9 @@ RUN echo "upload_max_filesize=15M" >  /usr/local/etc/php/conf.d/ontoviz.ini && \
 # Projet
 WORKDIR /var/www/html
 COPY . .
+
+# Supprimer le vendor commité s'il existe, puis réinstaller proprement
+RUN rm -rf vendor
 
 # Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
