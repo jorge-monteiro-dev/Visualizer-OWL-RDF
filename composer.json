@@ -1,0 +1,16 @@
+{
+    "name": "ontoviz/app",
+    "description": "OWL/RDF Ontology Visualizer - MVC PHP Application",
+    "type": "project",
+    "require": {
+        "php": ">=8.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

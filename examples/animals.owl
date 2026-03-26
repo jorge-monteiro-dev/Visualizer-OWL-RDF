@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+]>
+<rdf:RDF xmlns="http://example.org/animals#"
+     xml:base="http://example.org/animals"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+
+    <owl:Ontology rdf:about="http://example.org/animals">
+        <rdfs:label>Animal Kingdom Ontology</rdfs:label>
+        <rdfs:comment>A simple ontology about the animal kingdom for demonstration purposes.</rdfs:comment>
+    </owl:Ontology>
+
+    <!-- ===== CLASSES ===== -->
+
+    <owl:Class rdf:about="http://example.org/animals#Animal">
+        <rdfs:label>Animal</rdfs:label>
+        <rdfs:comment>Any living organism that is an animal.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/animals#Vertebrate">
+        <rdfs:label>Vertebrate</rdfs:label>
+        <rdfs:comment>Animal with a backbone.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://example.org/animals#Animal"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/animals#Invertebrate">
+        <rdfs:label>Invertebrate</rdfs:label>
+        <rdfs:comment>Animal without a backbone.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://example.org/animals#Animal"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/animals#Mammal">
+        <rdfs:label>Mammal</rdfs:label>
+        <rdfs:comment>Warm-blooded vertebrate with hair or fur.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://example.org/animals#Vertebrate"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/animals#Bird">
+        <rdfs:label>Bird</rdfs:label>
+        <rdfs:comment>Feathered, winged vertebrate.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://example.org/animals#Vertebrate"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/animals#Reptile">
+        <rdfs:label>Reptile</rdfs:label>
+        <rdfs:comment>Cold-blooded vertebrate with scales.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://example.org/animals#Vertebrate"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/animals#Fish">
+        <rdfs:label>Fish</rdfs:label>
+        <rdfs:comment>Aquatic vertebrate with gills and fins.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://example.org/animals#Vertebrate"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/animals#Amphibian">
+        <rdfs:label>Amphibian</rdfs:label>
+        <rdfs:comment>Cold-blooded vertebrate that can live on land and water.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://example.org/animals#Vertebrate"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/animals#Carnivore">
+        <rdfs:label>Carnivore</rdfs:label>
+        <rdfs:comment>Animal that feeds primarily on other animals.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://example.org/animals#Mammal"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/animals#Herbivore">
+        <rdfs:label>Herbivore</rdfs:label>
+        <rdfs:comment>Animal that feeds primarily on plants.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://example.org/animals#Mammal"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/animals#Omnivore">
+        <rdfs:label>Omnivore</rdfs:label>
+        <rdfs:comment>Animal that eats both plants and other animals.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://example.org/animals#Mammal"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/animals#Primate">
+        <rdfs:label>Primate</rdfs:label>
+        <rdfs:comment>Higher-order mammal including humans, apes, and monkeys.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://example.org/animals#Mammal"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/animals#Insect">
+        <rdfs:label>Insect</rdfs:label>
+        <rdfs:comment>Six-legged arthropod invertebrate.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://example.org/animals#Invertebrate"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://example.org/animals#Arachnid">
+        <rdfs:label>Arachnid</rdfs:label>
+        <rdfs:comment>Eight-legged arthropod invertebrate.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://example.org/animals#Invertebrate"/>
+    </owl:Class>
+
+    <!-- ===== OBJECT PROPERTIES ===== -->
+
+    <owl:ObjectProperty rdf:about="http://example.org/animals#eats">
+        <rdfs:label>eats</rdfs:label>
+        <rdfs:comment>Relates an animal to what it eats.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.org/animals#Animal"/>
+        <rdfs:range rdf:resource="http://example.org/animals#Animal"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/animals#hasHabitat">
+        <rdfs:label>hasHabitat</rdfs:label>
+        <rdfs:comment>Relates an animal to its natural habitat.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.org/animals#Animal"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://example.org/animals#isPreyOf">
+        <rdfs:label>isPreyOf</rdfs:label>
+        <rdfs:comment>Inverse of eats — relates prey to predator.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.org/animals#Animal"/>
+        <rdfs:range rdf:resource="http://example.org/animals#Animal"/>
+        <owl:inverseOf rdf:resource="http://example.org/animals#eats"/>
+    </owl:ObjectProperty>
+
+    <!-- ===== DATATYPE PROPERTIES ===== -->
+
+    <owl:DatatypeProperty rdf:about="http://example.org/animals#averageLifespan">
+        <rdfs:label>averageLifespan</rdfs:label>
+        <rdfs:comment>Average lifespan of the animal species in years.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.org/animals#Animal"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://example.org/animals#isEndangered">
+        <rdfs:label>isEndangered</rdfs:label>
+        <rdfs:comment>Whether the species is currently endangered.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://example.org/animals#Animal"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- ===== INDIVIDUALS ===== -->
+
+    <owl:NamedIndividual rdf:about="http://example.org/animals#Lion">
+        <rdf:type rdf:resource="http://example.org/animals#Carnivore"/>
+        <rdfs:label>Lion</rdfs:label>
+        <rdfs:comment>Panthera leo — the king of the jungle.</rdfs:comment>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/animals#Eagle">
+        <rdf:type rdf:resource="http://example.org/animals#Bird"/>
+        <rdfs:label>Eagle</rdfs:label>
+        <rdfs:comment>Large bird of prey.</rdfs:comment>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/animals#Dolphin">
+        <rdf:type rdf:resource="http://example.org/animals#Mammal"/>
+        <rdfs:label>Dolphin</rdfs:label>
+        <rdfs:comment>Highly intelligent marine mammal.</rdfs:comment>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="http://example.org/animals#Chimpanzee">
+        <rdf:type rdf:resource="http://example.org/animals#Primate"/>
+        <rdfs:label>Chimpanzee</rdfs:label>
+        <rdfs:comment>Pan troglodytes — closest living relative to humans.</rdfs:comment>
+    </owl:NamedIndividual>
+
+</rdf:RDF>
