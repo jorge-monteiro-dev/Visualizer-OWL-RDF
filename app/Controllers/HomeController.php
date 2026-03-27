@@ -12,7 +12,7 @@ class HomeController extends Controller
     public function index(Request $request): void
     {
         $this->view('home', [
-            'title' => 'OntoViz — Visualiseur d\'Ontologies',
+            'title' => 'Visualizer OWL & RDF',
         ]);
     }
 }

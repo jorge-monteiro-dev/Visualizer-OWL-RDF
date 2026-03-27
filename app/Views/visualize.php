@@ -619,10 +619,10 @@ body{
     <nav class="left-nav">
         <div class="nav-label">Vues</div>
         <button class="view-btn active" data-view="radial" onclick="switchView('radial')">
-            Radiale
+            Force
         </button>
         <button class="view-btn" data-view="sunburst" onclick="switchView('sunburst')">
-            Coupe
+            Radiale
         </button>
         <button class="view-btn" data-view="tree" onclick="switchView('tree')">
             Hiérarchie

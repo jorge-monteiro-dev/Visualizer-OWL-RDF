@@ -1,6 +1,6 @@
 {
-    "name": "ontoviz/app",
-    "description": "OWL/RDF Ontology Visualizer - MVC PHP Application",
+    "name": "visualizer/app",
+    "description": "OWL/RDF Visualizer - MVC PHP Application",
     "type": "project",
     "require": {
         "php": ">=8.3"

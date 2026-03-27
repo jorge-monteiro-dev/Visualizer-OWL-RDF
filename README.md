@@ -1,16 +1,14 @@
-# 🌀 OntoViz — Visualiseur d'Ontologies OWL/RDF
+# 🌀 Visualizer — Visualiseur OWL/RDF
 
-Application PHP 8.5 MVC pour visualiser des ontologies sémantiques (OWL, RDF, Turtle) avec D3.js v7.
+Application PHP 8.5 MVC pour visualiser des ontologies sémantiques (OWL, RDF) avec D3.js v7.
 
 ---
 
-## ✨ Fonctionnalités
-
-- **Upload de fichiers OWL, RDF/XML, Turtle (.ttl), N3** — parsing côté serveur en PHP pur
+- **Upload de fichiers OWL, RDF/XML** — parsing côté serveur en PHP pur
 - **3 vues D3.js interactives** :
-  - 🌀 **Radiale** — graphe force-directed avec détection de clustering, flèches directionnelles, drag & drop
-  - 🍩 **Coupe (Sunburst)** — partition radiale en couches par profondeur hiérarchique
-  - 🌳 **Hiérarchie** — arbre collapsible horizontal (cliquer sur un nœud pour déplier/replier)
+  - **Force** — graphe force-directed avec détection de clustering, flèches directionnelles, drag & drop
+  - **Radiale(Sunburst)** — partition radiale en couches par profondeur hiérarchique
+  - **Hiérarchie** — arbre collapsible horizontal (cliquer sur un nœud pour déplier/replier)
 - **Panneau de détail** — affiche URI, type, commentaire, propriétés, et voisins du nœud sélectionné
 - **Filtres dynamiques** par type de nœud (Classe, Propriété objet, Propriété de données, Individu…)
 - **Recherche** de nœuds par nom ou URI avec surbrillance
@@ -20,7 +18,7 @@ Application PHP 8.5 MVC pour visualiser des ontologies sémantiques (OWL, RDF, T
 
 ---
 
-## 🚀 Installation & Démarrage
+## Installation & Démarrage
 
 ### Prérequis
 
@@ -50,7 +48,7 @@ Ouvrir : **http://localhost:8080**
 
 ---
 
-## 🌐 Déploiement Apache/Nginx
+## Déploiement Apache/Nginx
 
 ### Apache
 
@@ -97,7 +95,7 @@ server {
 
 ---
 
-## 🏗 Architecture MVC
+## Architecture MVC
 
 ```
 ontoviz/
@@ -132,7 +130,7 @@ ontoviz/
 
 ---
 
-## 🔌 API JSON interne
+## API JSON interne
 
 | Route | Méthode | Description |
 |-------|---------|-------------|
@@ -164,20 +162,18 @@ ontoviz/
 
 ---
 
-## 📐 Formats supportés
+##  Formats supportés
 
 | Format | Extension | Notes |
 |--------|-----------|-------|
 | OWL/XML | `.owl` | Syntax XML-RDF de référence |
 | RDF/XML | `.rdf`, `.xml` | Standard W3C |
-| Turtle | `.ttl`, `.n3` | Syntaxe lisible N3/Turtle |
-| N-Triples | `.nt` | Un triple par ligne |
 
 ---
 
-## 🎨 Stack technique
+## Stack technique
 
-- **PHP 8.5** — MVC maison, PSR-4 Autoload, `simplexml` pour OWL, parser Turtle natif
+- **PHP 8.5** — MVC maison, PSR-4 Autoload, `simplexml` pour OWL
 - **D3.js v7** — Force simulation, Partition/Sunburst, Tree layout
 - **CSS Variables** — Thème dark sans dépendances externes
 - **Google Fonts** — Syne (titres), DM Sans (UI), DM Mono (code)
@@ -185,7 +181,7 @@ ontoviz/
 
 ---
 
-## 🧪 Tests rapides
+## Tests rapides
 
 ```bash
 # Démarrer le serveur
