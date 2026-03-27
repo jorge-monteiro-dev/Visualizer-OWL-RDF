@@ -56,10 +56,10 @@ Pointer le DocumentRoot vers `public/`. Le fichier `public/.htaccess` gère la r
 
 ```apache
 <VirtualHost *:80>
-    ServerName ontoviz.local
-    DocumentRoot /var/www/ontoviz/public
+    ServerName visualizer.local
+    DocumentRoot /var/www/visualizer/public
 
-    <Directory /var/www/ontoviz/public>
+    <Directory /var/www/visualizer/public>
         AllowOverride All
         Require all granted
     </Directory>
@@ -77,8 +77,8 @@ systemctl restart apache2
 ```nginx
 server {
     listen 80;
-    server_name ontoviz.local;
-    root /var/www/ontoviz/public;
+    server_name visualizer.local;
+    root /var/www/visualizer/public;
     index index.php;
 
     location / {
@@ -98,7 +98,7 @@ server {
 ## Architecture MVC
 
 ```
-ontoviz/
+visualizer/
 ├── app/
 │   ├── Controllers/
 │   │   ├── HomeController.php      # Page d'accueil / upload

@@ -69,7 +69,7 @@ class OntologyController extends Controller
         $token = preg_replace('/[^a-zA-Z0-9_\-]/', '', $token);
 
         $this->view('visualize', [
-            'title'    => 'OntoViz — ' . htmlspecialchars($filename),
+            'title'    => 'Visualizer — ' . htmlspecialchars($filename),
             'token'    => $token,
             'filename' => htmlspecialchars($filename),
         ]);

@@ -671,7 +671,7 @@ body{
     </div>
 
     <aside class="right-panel">
-        <div class="panel-header">🔎 Détail du nœud</div>
+        <div class="panel-header">Détail du nœud</div>
         <div class="panel-body" id="nodeDetail">
             <div class="node-empty">
                 <div class="empty-icon">◎</div>
